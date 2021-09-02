@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import './components.css';
 
+//to not repeat the initial state
+const INITIAL_STATE ={
+    usuario: {nome:'', idade:'', email:''}
+}
+
+
 class AdicionarUsuario extends Component{
     constructor(props){
         super(props);
 
-        this.state = {
-            usuario: {nome:'', idade:'', email:''}
-        }
+        this.state = INITIAL_STATE;
 
         //"connect the method"
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -22,13 +26,21 @@ class AdicionarUsuario extends Component{
     //add user
     onSubmitHandler(event){
         event.preventDefault();
-        //generation random ID
-        const id = Math.floor(Math.random()*1000);
-        const usuario ={...this.state.usuario, id};
+        //geting API
+        const usuario = this.state.usuario;
 
-        //inputs cleaning
-        this.setState({usuario:{nome:'', idade:'', email:''}});
-        this.props.adicionarUsuario(usuario);
+        fetch('https://reqres.in/api/users', {
+            method: 'POST', //url, method(default:get)
+            headers: {'Content-Type': 'application/json'}, //configuration
+            body: JSON.stringify(usuario)//the which will pass to API, and transformation in JSON for API understand
+        })
+            .then(resposta =>resposta.json())
+            .then(dados => {
+                //inputs cleaning
+                this.setState(INITIAL_STATE);
+                this.props.adicionarUsuario(dados);
+            }
+        )
     }
 
     render(){
@@ -51,8 +63,7 @@ class AdicionarUsuario extends Component{
                             <input type="number"
                                 name="idade"
                                 value={this.state.usuario.idade}
-                                onChange={this.onChangeHandler}
-                                required>
+                                onChange={this.onChangeHandler}>
                             </input>
                         </div>
                     </div>
