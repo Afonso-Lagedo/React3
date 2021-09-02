@@ -1,0 +1,17 @@
+//Primeira vez no terminal, com node instalado no computador:
+npx create-react-app nomeProjeto
+
+//Para rodar o projeto pela primeira vez
+npm start
+
+//Extensão para chrome
+React Developer Tools
+
+//Arquivo
+src/App.js
+
+//Instalar dependências
+npm install
+
+//Instalar pacote (formato da data) no terminal
+npm install date-fns

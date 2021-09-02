@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './components.css';
 
 class AdicionarUsuario extends Component{
     constructor(props){
@@ -32,11 +33,11 @@ class AdicionarUsuario extends Component{
 
     render(){
         return(
-            <div>
+            <div className="AddUsuario">
                 <h2>Adicionar Usuário</h2>
                 <form onSubmit={this.onSubmitHandler}>
-                    <div>
-                        <div>
+                    <div className="Linha">
+                        <div className="Coluna">
                             <label>Nome</label>
                             <input type="text"
                                 name="nome"
@@ -45,7 +46,7 @@ class AdicionarUsuario extends Component{
                                 required>
                             </input>
                         </div>
-                        <div>
+                        <div className="Coluna">
                             <label>Idade</label>
                             <input type="number"
                                 name="idade"
@@ -55,8 +56,8 @@ class AdicionarUsuario extends Component{
                             </input>
                         </div>
                     </div>
-                    <div>
-                        <div>
+                    <div className="Linha">
+                        <div className="Coluna">
                             <label>Email</label>
                             <input type="email"
                                 name="email"

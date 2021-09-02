@@ -1,0 +1,124 @@
+/*usuário*/
+.Usuario{
+    padding: 1.5rem;
+    position: relative;
+    margin: 1rem 0;
+    border-radius: .25rem;
+    background-color: #FFF;
+    box-shadow: 0 2px 5px rgba(0,0,0, .14);
+}
+
+.Usuario:hover{
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .14);
+}
+
+.Usuario ul{
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.Usuario ul li strong{
+    color: #161845;
+}
+
+.Usuario button{
+    top: 0.5rem;
+    right: 0.5rem;
+    border: none;
+    outline: none;
+    color: #FFF;
+    background: none;
+    cursor: pointer;
+    line-height: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: sans-serif;
+    position: absolute;
+    border-radius: 1.5rem;
+    background-color: #363744;
+    padding: .2rem .35rem .30rem .35rem;
+}
+
+.Usuario button:hover,
+.Usuario button:focus{
+    color: #FFF;
+    background-color: #161845;
+}
+
+
+/*adicionar usuário*/
+.AddUsuario{
+    margin: 2rem 0;
+    padding: 1.25rem;
+    background-color: #FFF;
+    background-color: #FFEBF3;
+    box-shadow: 0 2px 5px rgba(0,0,0, .14);
+}
+
+.AddUsuario h2{
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color:#c22833;
+    margin: .25rem 0;
+}
+
+.AddUsuario .Linha{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -.5rem;
+    padding: .5rem 0;
+}
+
+.AddUsuario .Coluna {
+    flex-basis: 0;/*Alinhamento*/
+    flex-grow: 1;
+    max-width: 100%;
+    padding: 0 2rem;
+}
+
+.AddUsuario label{
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+.AddUsuario input{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #FFF;
+    border: 1px solid #161845;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.AddUsuario button{
+    color: #FFF;
+    cursor: pointer;
+    display: inline-block;
+    background-color: #161845;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    margin-top: 1rem;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.AddUsuario input:focus, .AddUsuario button:focus{
+    outline: 0;
+    border-color: #161845;
+    box-shadow: 0 0 0 .2rem #161845;
+}
+
+.AddUsuario button:hover{
+    background-color: #363744;
+}
