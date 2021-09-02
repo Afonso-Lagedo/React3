@@ -1,8 +1,8 @@
 //to use Components on project
 import React, {Component} from 'react';
 
-//$$$$$$$$$$$$$$$$$$$$$$$
-import Usuario from './Usuario/Usuario';
+import AdicionarUsuario from './AdicionarUsuario';
+import Usuario from './Usuario';
 
 //create class of component type
 class Usuarios extends Component{
@@ -20,10 +20,17 @@ class Usuarios extends Component{
             ]
         }
 
-        
+        //"connecting the method"
+        this.adicionarUsuario = this.adicionarUsuario.bind(this);
     }
 
-
+    //add user
+    adicionarUsuario(usuario){
+        //get state of usuarios and add usuario
+        const usuarios = [...this.state.usuarios, usuario];
+        //actualization of state
+        this.setState({usuarios:usuarios});
+    }
 
     //remove user
     removerUsuario(usuario){
@@ -40,20 +47,21 @@ class Usuarios extends Component{
 
     //all component have render
     render(){
-        //$$$$$$
-        return(
 
-            //show users
-            
-                //get all usuarios
-                this.state.usuarios.map(usuario =>(
+        return(
+            <>
+                {/*add user*/}
+                <AdicionarUsuario adicionarUsuario={this.adicionarUsuario}/>
+
+                {/*get all usuarios and show*/}
+                {this.state.usuarios.map(usuario =>(
                     <Usuario key={usuario.id}
                         usuario={usuario}
                         //remove user
                         removerUsuario={this.removerUsuario.bind(this, usuario)}
                     />
-                ))
-            
+                ))}
+            </>
         );
     }
 }

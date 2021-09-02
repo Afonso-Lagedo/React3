@@ -1,11 +1,9 @@
 import React from 'react';
 
-//$$$$$$$$$$
-
 //create Usuario
 function Usuario(props){
     return(
-        <div>{/*$$$$$ dentro da div*/}
+        <div>
             <ul>
                 <li><strong>ID:</strong>{props.usuario.id}</li>
                 <li><strong>Nome:</strong>{props.usuario.nome}</li>
