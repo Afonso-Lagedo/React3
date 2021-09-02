@@ -31,12 +31,18 @@ class Usuarios extends Component{
     removerUsuario(usuario){
         //if confirm alert, will remove
         if (window.confirm(`Excluir"${usuario.nome}"?`)){
-            //receives state
-            let usuarios = this.state.usuarios;
-            //geting user of ID
-            usuarios = usuarios.filter(filtrado => filtrado.id !==usuario.id);
-            //actualization of state
-            this.setState({usuarios:usuarios});
+
+            fetch(`https://reqres.in/api/users/${usuario.id}`,
+                {method: 'DELETE'}
+            )
+            .then(resposta =>{
+                //receives state
+                let usuarios = this.state.usuarios;
+                //geting user of ID
+                usuarios = usuarios.filter(filtrado => filtrado.id !==usuario.id);
+                //actualization of state
+                this.setState({usuarios:usuarios});
+            })
         }
     }
 
