@@ -12,7 +12,7 @@ function Usuario(props){
                 <li><strong>Idade:</strong>{props.usuario.idade}</li>
                 <li><strong>Email:</strong>{props.usuario.email}</li>
             </ul>
-            {/*$$$$$$$$$$$$$$$$ */}
+            <button onClick={props.removerUsuario}>&times;</button>
         </div>
     )
 }
