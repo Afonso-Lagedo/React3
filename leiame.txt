@@ -15,3 +15,6 @@ npm install
 
 //Instalar pacote (formato da data) no terminal
 npm install date-fns
+
+//API de teste
+https://reqres.in/

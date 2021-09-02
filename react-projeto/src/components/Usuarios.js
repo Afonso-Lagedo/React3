@@ -11,12 +11,7 @@ class Usuarios extends Component{
         super (props)
         this.state ={//actualization of state
             usuarios:[
-                {
-                    id:1, nome: 'Afonso', idade:'28', email:'afonso.ur@gmail.com'
-                },
-                {
-                    id:2, nome: 'Felipe', idade:'3', email:'felipe@gmail.com'
-                }
+                //************** */
             ]
         }
 
@@ -43,6 +38,28 @@ class Usuarios extends Component{
             //actualization of state
             this.setState({usuarios:usuarios});
         }
+    }
+
+    //receives API data
+    componentDidMount(){
+        fetch('https://reqres.in/api/users') //localization of API //API of test: https://reqres.in/
+        //executed in sequence
+            .then(resposta=>resposta.json())
+            .then (dados=>{
+                //tranformation API data to props of my state
+                const usuarios = dados.data.map(usuario =>{
+                    return{
+                        id:usuario.id,
+                        nome: usuario.first_name,
+                        email:usuario.email
+                    }
+                })
+
+                //actualization state
+                //this.setState({usuarios:usuarios})
+                //when have same name
+                this.setState({usuarios})
+            })
     }
 
     //all component have render
