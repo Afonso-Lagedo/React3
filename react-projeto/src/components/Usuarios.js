@@ -1,7 +1,6 @@
 //to use Components on project
 import React, {useState, useEffect} from 'react';
 
-import AdicionarUsuario from './AdicionarUsuario';
 import Usuario from './Usuario';
 
 //create class of component type
@@ -29,11 +28,6 @@ function Usuarios() {
                 setUsuarios(usuarios)
             })
     }, [])//empty array, since passing it doesn't need dependencies
-    
-    //add user
-    const adicionarUsuario = usuario => {
-        setUsuarios(usuariosAtuais =>[...usuariosAtuais, usuario])
-    }
 
     //remove user
     const removerUsuario = usuario =>{
@@ -55,9 +49,6 @@ function Usuarios() {
 
     return(
         <>
-            {/*add user*/}
-            <AdicionarUsuario adicionarUsuario={adicionarUsuario}/>
-
             {/*get all usuarios and show*/}
             {usuarios.map(usuario =>(
                 <Usuario key={usuario.id}

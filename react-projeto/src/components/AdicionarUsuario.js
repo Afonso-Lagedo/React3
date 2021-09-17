@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './components.css';
 
-function AdicionarUsuario(props){
+function AdicionarUsuario(){
 
     //return the nome, and to actualizetion use setNome
     const [nome, setNome]= useState('');//name >>>state   setName>>>state actualization
@@ -28,9 +28,7 @@ function AdicionarUsuario(props){
                 setNome('')
                 setIdade('')
                 setEmail('')
-                props.adicionarUsuario(dados);
-            }
-        )
+            })
     }
 
 

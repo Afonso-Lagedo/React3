@@ -18,3 +18,7 @@ npm install date-fns
 
 //API de teste
 https://reqres.in/
+
+//Pacote para trabalhar com as rotas
+npm install react-router-dom
+
