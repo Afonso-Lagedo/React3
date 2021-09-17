@@ -1,53 +1,15 @@
 //to use Components on project
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import AdicionarUsuario from './AdicionarUsuario';
 import Usuario from './Usuario';
 
 //create class of component type
-class Usuarios extends Component{
-    //properties mounting
-    constructor(props){
-        super (props)
-        this.state ={//actualization of state
-            usuarios:[
-                //************** */
-            ]
-        }
+function Usuarios() {
 
-        //"connecting the method"
-        this.adicionarUsuario = this.adicionarUsuario.bind(this);
-    }
+    const [usuarios, setUsuarios] = useState([])
 
-    //add user
-    adicionarUsuario(usuario){
-        //get state of usuarios and add usuario
-        const usuarios = [...this.state.usuarios, usuario];
-        //actualization of state
-        this.setState({usuarios:usuarios});
-    }
-
-    //remove user
-    removerUsuario(usuario){
-        //if confirm alert, will remove
-        if (window.confirm(`Excluir"${usuario.nome}"?`)){
-
-            fetch(`https://reqres.in/api/users/${usuario.id}`,
-                {method: 'DELETE'}
-            )
-            .then(resposta =>{
-                //receives state
-                let usuarios = this.state.usuarios;
-                //geting user of ID
-                usuarios = usuarios.filter(filtrado => filtrado.id !==usuario.id);
-                //actualization of state
-                this.setState({usuarios:usuarios});
-            })
-        }
-    }
-
-    //receives API data
-    componentDidMount(){
+    useEffect(()=>{
         fetch('https://reqres.in/api/users') //localization of API //API of test: https://reqres.in/
         //executed in sequence
             .then(resposta=>resposta.json())
@@ -64,29 +26,49 @@ class Usuarios extends Component{
                 //actualization state
                 //this.setState({usuarios:usuarios})
                 //when have same name
-                this.setState({usuarios})
+                setUsuarios(usuarios)
             })
+    }, [])//empty array, since passing it doesn't need dependencies
+    
+    //add user
+    const adicionarUsuario = usuario => {
+        setUsuarios(usuariosAtuais =>[...usuariosAtuais, usuario])
     }
 
-    //all component have render
-    render(){
+    //remove user
+    const removerUsuario = usuario =>{
+        //if confirm alert, will remove
+        if (window.confirm(`Excluir"${usuario.nome}"?`)){
 
-        return(
-            <>
-                {/*add user*/}
-                <AdicionarUsuario adicionarUsuario={this.adicionarUsuario}/>
-
-                {/*get all usuarios and show*/}
-                {this.state.usuarios.map(usuario =>(
-                    <Usuario key={usuario.id}
-                        usuario={usuario}
-                        //remove user
-                        removerUsuario={this.removerUsuario.bind(this, usuario)}
-                    />
-                ))}
-            </>
-        );
+            fetch(`https://reqres.in/api/users/${usuario.id}`,
+                {method: 'DELETE'}
+            )
+            .then(resposta =>{
+                //receives state
+                let usuarios = this.state.usuarios;
+                //geting user of ID
+                setUsuarios = usuarios.filter(filtrado => filtrado.id !==usuario.id);
+            })
+        }
     }
+
+
+    return(
+        <>
+            {/*add user*/}
+            <AdicionarUsuario adicionarUsuario={adicionarUsuario}/>
+
+            {/*get all usuarios and show*/}
+            {usuarios.map(usuario =>(
+                <Usuario key={usuario.id}
+                    usuario={usuario}
+                    //remove user
+                    removerUsuario={() =>removerUsuario(usuario)}
+                />
+            ))}
+        </>
+    );
+
 }
 
 export default Usuarios;
