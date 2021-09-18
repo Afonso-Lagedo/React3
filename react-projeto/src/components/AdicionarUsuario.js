@@ -22,13 +22,15 @@ function AdicionarUsuario(){
             headers: {'Content-Type': 'application/json'}, //configuration
             body: JSON.stringify(usuario)//the which will pass to API, and transformation in JSON for API understand
         })
-            .then(resposta =>resposta.json())
-            .then(dados => {
-                //inputs cleaning
-                setNome('')
-                setIdade('')
-                setEmail('')
+            .then(resposta =>{
+                if (resposta.ok){
+                    setNome('')
+                    setIdade('')
+                    setEmail('')
+                    alert('Usuário cadastrado com sucesso!')
+                }
             })
+
     }
 
 
