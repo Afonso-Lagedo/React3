@@ -28,7 +28,7 @@ function App() {
         </header>
         <main>
           <Switch>
-            <Route path="/usuarios/:id">
+            <Route path="/usuarios/:codigo">
               <DetalhesUsuario />
             </Route>
             <Route path="/usuarios">

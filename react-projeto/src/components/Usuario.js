@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import './components.css';
 //create Usuario
@@ -10,6 +11,7 @@ function Usuario(props){
                 <li><strong>Nome: </strong>{props.usuario.nome}</li>
                 <li><strong>Idade: </strong>{props.usuario.idade}</li>
                 <li><strong>Email: </strong>{props.usuario.email}</li>
+                <li><Link to={`/usuarios/${props.usuario.id}`}>Detalhes</Link></li>
             </ul>
             <button onClick={props.removerUsuario}>&times;</button>
         </div>
